@@ -36,7 +36,9 @@ VehiclePropagMeshes::~VehiclePropagMeshes() {}
  * \param 	None
  * \return 	None
  */
-void VehiclePropagMeshes::draw() {}
+void VehiclePropagMeshes::draw() {
+
+}
 
 /**
  * \brief 	Inherited method from class Data

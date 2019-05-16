@@ -224,7 +224,8 @@ int Vanet::OGR2AntennaMesh(OGRPoint* temp) {
  * \param 	None
  * \return 	None
  */
-void Vanet::draw() {}
+void Vanet::draw() {
+}
 
 /**
  * \brief 	Inherited method from class Data
@@ -236,8 +237,9 @@ void Vanet::draw() {}
  */
 void Vanet::draw(unsigned long long t) {
     // We create a population with the current positions of every vehicle of the fleet
+
+
     population.clear();
-    //cout << ">>>>>>>  vanet draw  <<<<<<<" << endl;
     unordered_map<string, Vehicule*>::iterator it = this->fleet->fleet.begin();
     for (; it!=this->fleet->fleet.end(); it++) {
         Vehicule* currentVehicle = it->second;
@@ -340,6 +342,7 @@ void Vanet::draw(unsigned long long t) {
 //    glBegin(GL_POINTS);
 //    glVertex3d(tmp2->getX()+25, tmp2->getY(), 0.0);
 //    glEnd();
+
 }
 
 /**

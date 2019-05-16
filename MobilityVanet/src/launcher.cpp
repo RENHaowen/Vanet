@@ -52,6 +52,9 @@ using namespace std::chrono;
 
 int main(int argc, char *argv[]) {
 
+
+    glutInit(&argc, argv);
+
     GeologicModule* module = GeologicModule::getInstance();
     module->getRoleName();
 
@@ -150,11 +153,20 @@ int main(int argc, char *argv[]) {
     //chk_vpm->click();
     v->addLayer(move(vpm_layer));
 
+
     auto cl_layer = make_unique<SingleLayer>(VM->clusterLinks.release());
     fleet_layer->addChild(cl_layer.get());
     v->addLayer(move(cl_layer));
 
 
+/*/
+    //ok
+    auto testCluster_layer = make_unique<SingleLayer>(VM->clusterLinks.release());
+    fleet_layer->addChild(testCluster_layer.get());
+
+    v->addLayer(move(testCluster_layer));
+
+/*/
 
 
     // Finalize the checkboxes panel: add a stretch, and add it to the window.
@@ -171,5 +183,6 @@ int main(int argc, char *argv[]) {
 //    t->setStopTime(QTime(1, 0, 0, 0));
 //    t->setTimeScale(1);
 //    t->playPauseSwap();
+
     return a.exec();
 }

@@ -10,6 +10,7 @@
 #include "geologic-core/algorithms/clustering/GeologicCluster.h"
 #include "geologic-core/algorithms/clustering/ClusteringEnvironment.h"
 
+
 using namespace std;
 using namespace customToolbox;
 using namespace geoMetrics;
@@ -65,21 +66,33 @@ void GeologicCluster::addObject(GeographicalObject* object) {
  * Centroid and timestamp are set to nullptr
  */
 bool GeologicCluster::computeCentroid() {
+   // cout << "false " << endl;
+    //cout << this->id << endl;
+
     if (this->records.size() <= 0) {
+
+        //cout << "<=  " << endl;
+
         setX(0);
         setY(0);
+        //cout << "false " << endl;
         return false;
     }
 
     double newX = 0;
     double newY = 0;
     for (unsigned int i=0; i<this->records.size(); i++) {
+
+        //cout << ">  " << endl;
+
         newX = ((newX*i) + this->records[i]->getX())/(i+1.0);
         newY = ((newY*i) + this->records[i]->getY())/(i+1.0);
     }
     setX(newX);
     setY(newY);
+    //cout << "centrre " << newX << " " << newY << endl;
 
+    //cout << "compute fin " << endl;
     return true;
 }
 

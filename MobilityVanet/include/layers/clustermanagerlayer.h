@@ -12,6 +12,7 @@
 #include <geologic-core/algorithms/clustering/kmeans/Kmeans.h>
 #include "clustering/propagclustering.h"
 #include "Common/color.h"
+#include <clustering/testclustering.h>
 
 
 class Vanet;
@@ -34,7 +35,8 @@ class ClusterManagerLayer : public SingleLayer {
 
         //std::unordered_map<std::string, GeologicCluster*> currentClusters;
         //DBscan algoClustering;
-        PropagClustering algoClustering;
+        //PropagClustering algoClustering;
+        testClustering  algoClustering;
 
         std::unordered_map<std::string, Color> colors; // A color for each Cluster
         time_t currentT;

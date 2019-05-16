@@ -30,7 +30,7 @@ win32: DEPENDPATH += c:/msys/1.0/local/include
 ### ------------------------------------->
 win32:CONFIG(release, debug|release): LIBS += -Lc:/msys/1.0/local/lib/ -lgdal
 else:win32:CONFIG(debug, debug|release): LIBS += -Lc:/msys/1.0/local/lib/ -lgdal
-else:unix: LIBS += -lgdal
+else:unix: LIBS += -lgdal -lGeographic
 
 
 win32:CONFIG(release, debug|release): LIBS += -Lc:/msys/1.0/local/lib/ -llibGeographic.dll

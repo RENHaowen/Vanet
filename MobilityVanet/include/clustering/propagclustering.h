@@ -43,9 +43,11 @@ class PropagClustering : public ClusteringEnvironment {
         void expandCluster(Fleet* fleet, AntennaMap* amap, time_t t, GeologicCluster* currentCluster, std::unordered_set<GeographicalObject*>& neighbors);
 
         double XminA = 933225;
-        double YminA = 2289885;
+        double YminA = 2289875;
         int nbmaillesXA = 582;
         int pdmA = 25;
+
+
 
 };
 

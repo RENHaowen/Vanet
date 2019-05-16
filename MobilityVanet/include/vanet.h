@@ -21,6 +21,7 @@
 #include <geologic-core/core/geologic-mapper/GeologicMapper.h>
 
 
+
 class Vanet : public DataManager, public Data {
 
     public:
@@ -64,6 +65,7 @@ class Vanet : public DataManager, public Data {
         std::unique_ptr<VehiclePropagCircle> vehiclePropagCircle;
         std::unique_ptr<VehiclePropagMeshes> vehiclePropagMeshes;
         std::unique_ptr<VehicleTrace> vehicleTrace;
+        //std::unique_ptr<> testCluster;
 
 
         std::vector<GeographicalObject*> population;

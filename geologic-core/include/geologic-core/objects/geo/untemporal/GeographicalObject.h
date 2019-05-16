@@ -7,6 +7,8 @@
 
 #include "ogr_geometry.h"
 #include <string>
+#include "glm/glm.hpp"
+
 
 
 class GeographicalObject: public OGRPoint {
@@ -22,8 +24,14 @@ class GeographicalObject: public OGRPoint {
         GeographicalObject(OGRPoint* pt);
         GeographicalObject(std::string name, OGRPoint* pt);
 
+
+
         //*/ -------------------------------------------------
         std::string name;
+
+
+
+
 };
 
 #endif // GEOGRAPHICALOBJECT_H

@@ -22,6 +22,7 @@ using namespace std;
 Vehicule::Vehicule(Fleet* environment) {
     this->environment = environment;
     this->id = 0;
+    this->name = to_string(this->id);
     this->statut = "";
     this->heureD = 0;
     this->indiceO = 0;
@@ -32,6 +33,7 @@ Vehicule::Vehicule(Fleet* environment) {
     this->radius = 80;
     //this->vPositions={0}; //tableau des positions initialisé à 0
 }
+
 
 /**
  * \brief 	Default destructor of class Vehicule
@@ -281,4 +283,32 @@ std::string Vehicule::getInfos() {
     std::string infos = "";
     infos += this->type + " at address: " + customToolbox::str(this);
     return infos;
+}
+
+
+//
+void Vehicule::setVelocity(time_t t){
+
+    // get the position of currentV in the time t and t+1
+    std::unique_ptr<OGRPoint> currentPosition = this->listTrajectories["0"]->display(t);
+    std::unique_ptr<OGRPoint> nextPosition = this->listTrajectories["0"]->display(t+1);
+
+    if(currentPosition != nullptr && nextPosition != nullptr){
+
+        this->velocity.x = nextPosition->getX() - currentPosition->getX();
+        this->velocity.y = nextPosition->getY() - currentPosition->getY();
+        this->velocity.z = 0;
+
+    }else {
+        this->velocity.x = 0;
+        this->velocity.y = 0;
+        this->velocity.z = 0;
+    }
+
+}
+
+glm::vec3 Vehicule::getVelocity(time_t t) {
+    this->setVelocity(t);
+
+    return  this->velocity;
 }

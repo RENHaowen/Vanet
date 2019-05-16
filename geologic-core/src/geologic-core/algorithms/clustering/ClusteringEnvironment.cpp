@@ -83,10 +83,24 @@ OGRSpatialReference* ClusteringEnvironment::getDataRef() {
  * \return 	None
  */
 const std::unordered_map<string, GeologicCluster*>& ClusteringEnvironment::getClusters() {
-    unordered_map<string, GeologicCluster*>::iterator it = this->clusters.begin();
-    while (it != this->clusters.end()) {
+
+    //cout << "getClustering begin   " << endl;
+
+    auto it = this->clusters.begin();
+
+    //cout << " clustering size " << this->clusters.size() << endl;
+
+    for (;it != this->clusters.end();it++) {
+
+        ///cout << it->second->id << endl;
+       // cout << "recored size " << it->second->records.size() << endl;
+        //cout << endl;
         it->second->computeCentroid();
-        it++;
+
     }
+
+
+    //cout << "getClustering end   " << endl;
+
     return clusters;
 }

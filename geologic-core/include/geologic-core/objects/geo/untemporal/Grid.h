@@ -5,8 +5,9 @@
 #ifndef GEOLOGICGRID_H
 #define GEOLOGICGRID_H
 
-#include "geologic-core/objects/geo/untemporal/GeographicalObject.h"
 #include "geologic-core/objects/geo/untemporal/GridMesh.h"
+#include "geologic-core/objects/geo/untemporal/GeographicalObject.h"
+#include "geologic-core/objects/geo/temporal/TemporalGeoPoint.h"
 #include "geologic-core/objects/geo/temporal/TemporalGeoPoint.h"
 #include <memory>
 

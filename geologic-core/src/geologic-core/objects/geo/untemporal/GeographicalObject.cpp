@@ -11,6 +11,7 @@
 #include "geologic-core/objects/geo/untemporal/GeographicalObject.h"
 #include "geologic-core/objects/geo/untemporal/GridMesh.h"
 
+
 using namespace std;
 
 
@@ -64,6 +65,7 @@ GeographicalObject::GeographicalObject(GeographicalObject* obj) {
     this->setX(obj->getX());
     this->setY(obj->getY());
     this->setZ(obj->getZ());
+
 }
 
 /**
@@ -83,7 +85,7 @@ GeographicalObject::GeographicalObject(OGRPoint* pt) {
  * \brief 	Default constructor of class GeographicalObject
  *
  * \param 	None
- * \return 	None
+ * \return 	NoneGeographicalObject::
  */
 GeographicalObject::GeographicalObject(string name, OGRPoint* pt) {
     this->name = name;
@@ -99,3 +101,4 @@ GeographicalObject::GeographicalObject(string name, OGRPoint* pt) {
  * \return 	None
  */
 GeographicalObject::~GeographicalObject() {}
+

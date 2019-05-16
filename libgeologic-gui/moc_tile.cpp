@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tile.hpp'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tile.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.1. It"
+#error "This file was generated using the moc from 5.12.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -43,7 +43,7 @@ QT_MOC_LITERAL(2, 27, 0) // ""
 static const uint qt_meta_data_DummyQObject[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        1,   14, // methods
@@ -75,10 +75,14 @@ void DummyQObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
     Q_UNUSED(_a);
 }
 
-const QMetaObject DummyQObject::staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_DummyQObject.data,
-      qt_meta_data_DummyQObject,  qt_static_metacall, nullptr, nullptr}
-};
+QT_INIT_METAOBJECT const QMetaObject DummyQObject::staticMetaObject = { {
+    &QObject::staticMetaObject,
+    qt_meta_stringdata_DummyQObject.data,
+    qt_meta_data_DummyQObject,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *DummyQObject::metaObject() const
@@ -90,7 +94,7 @@ void *DummyQObject::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_DummyQObject.stringdata0))
-        return static_cast<void*>(const_cast< DummyQObject*>(this));
+        return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 

@@ -69,12 +69,18 @@ void PropagClustering::startClustering(Fleet* fleet, AntennaMap* amap, time_t t)
 
         GridMesh* currentMesh_vehiclegrid = fleet->vehicleGrid->getMesh(currentObject); //Get the current mesh of this vehicule
         int meshPos_antennagrid = this->OGR2AntennaMesh(currentObject);//Get the mesh pos********************
+
+        if (amap->AMap->find(meshPos_antennagrid) != amap->AMap->end()) {cout << "noo" << endl;}
         if (amap->AMap->find(meshPos_antennagrid) != amap->AMap->end()) {
 
             std::vector<std::pair<std::unique_ptr<OGRPoint>, double>>& meshes_antennagrid = amap->AMap->at(meshPos_antennagrid)->meshes;//get the meshes of current antenna
             std::vector<GeographicalObject*> neigs;
             std::unordered_set<GeographicalObject*> connectedNeigs;
-            if (currentMesh_vehiclegrid != nullptr) neigs = currentMesh_vehiclegrid->getNeighborObjects(true); // Get the neighbor objects of this mesh
+            if (currentMesh_vehiclegrid != nullptr){
+                //cout << "size " <<neigs.size() << endl;
+                neigs = currentMesh_vehiclegrid->getNeighborObjects(true); // Get the neighbor objects of this mesh
+
+            }
 
             //get real neighbors
             for (unsigned int i=0; i<neigs.size(); i++) { //For each neighbor

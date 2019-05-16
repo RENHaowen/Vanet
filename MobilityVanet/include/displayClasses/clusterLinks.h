@@ -20,7 +20,7 @@ class ClusterLinks : public Data {
 
         //*/ -------------------------------------------------
         void draw();
-        void draw(unsigned long long);
+        void draw(unsigned long long t);
 
         //*/ -------------------------------------------------
         ClusterManagerLayer* parent;

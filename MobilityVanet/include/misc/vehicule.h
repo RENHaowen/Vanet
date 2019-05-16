@@ -26,6 +26,7 @@
 #include <glvectortile.h>
 #include "alerteinfo.h"
 #include <unordered_set>
+#include <glm/glm.hpp>
 
 class Fleet;
 
@@ -59,6 +60,17 @@ class Vehicule : public MobileObject, public GeographicalObject, public Geologic
         bool hasCluster;
         double radius;
 
+
+
+
+        /////////////////parameters add
+        ///
+        glm::vec3 velocity;
+        std::string state;
+        std::string headName;
+        double parameterMobilite;
+
+
         int mergedColors = 0;
         int tabouDuration = 120;
         int transmissionDuration = 20;
@@ -66,6 +78,10 @@ class Vehicule : public MobileObject, public GeographicalObject, public Geologic
 
         void setType();
         std::string getInfos();
+
+        //set velocity of currentvehicule in time t
+        void setVelocity(time_t t);
+        glm::vec3 getVelocity(time_t t);
 };
 
 

@@ -50,6 +50,8 @@ void ClusterManagerLayer::draw() {}
  */
 void ClusterManagerLayer::draw(unsigned long long t) {
 
+
+    cout << " clusterManager draw begin " << endl;
     if (visible) {
         if (currentT != t) {
             currentT = t;
@@ -59,15 +61,30 @@ void ClusterManagerLayer::draw(unsigned long long t) {
             std::unordered_map<std::string, Color> tempColors; // The future colors of the clusters
 
             algoClustering.setDataRef(displayRef);
+
             //algoClustering.startDBscan(&(parent->population), pair<string, double>("meters", parent->params.vehicleRadius), 1);
             //algoClustering.startKmeans(&population, 20);
-            algoClustering.startClustering(parent->fleet.get(), parent->antMapper.get(), t);
+            //algoClustering.startClustering(parent->fleet.get(), parent->antMapper.get(), t);
+
+            /////NEW
+            algoClustering.startDBscan(parent->fleet.get(), parent->antMapper.get(), t);
+
+            cout << " clusterManager fin starDBSCane  " << endl;
 
             // We get back the clusters and list them
-            unordered_map<string, GeologicCluster*> clusters = algoClustering.getClusters();
+            unordered_map<string, GeologicCluster*> clusters;
+            clusters = algoClustering.getClusters();
+
+            cout << clusters.size() << endl;
+
+           // GeologicCluster* tempC = clusters[];
+          //  cout << "na meeeeeeeeeeee " << tempC->id << "   " << tempC->records.size() << endl;
             unordered_map<string, GeologicCluster*>::iterator itc = clusters.begin();
+
             for (; itc!=clusters.end(); itc++) {
+
                 GeologicCluster* ckm = itc->second;
+                //cout << "cluster size " << ckm->records.size() << endl;
                 Color c = Color(0.1, 0.1, 0.1, 0.4); //default color
 
                 // In the case of DBscan, we don't do anything for the cluster Noise
@@ -82,6 +99,8 @@ void ClusterManagerLayer::draw(unsigned long long t) {
                     GridMesh* ckmMesh = this->clusterGrid->getMesh(ckm, true); //it's an object not already in the mesh, we are not sure its here
                     // We get the neighbors within a limited range (hence the 'true' parameter)
                     if (ckmMesh != nullptr) neigs = ckmMesh->getNeighborObjects(true);
+
+                    //cout << neigs.size() << endl;
 
                     // If there is no neighbors, this means there wasn't any cluster at t-1 close to ckm
                     if (neigs.size() <= 0) {
@@ -108,8 +127,11 @@ void ClusterManagerLayer::draw(unsigned long long t) {
                         // And we add it to the new set of colors
                         tempColors.insert(pair<string, Color>(ckm->name, c));
                     }
+
                 }
             }
+
+
 
             // We just clear all the (t-1) colors
             this->colors.clear();
@@ -119,6 +141,8 @@ void ClusterManagerLayer::draw(unsigned long long t) {
             // We clear the Grid. We remove the positions of the previous clusters (t-1)
             // We use 'true' as a parameter to free the memory created in the next loop
             this->clusterGrid->clearGrid(true);
+
+            //cout << "clusterManager test ici 2" << endl;
 
             // For all the cluster generated at t, we add them (their centroid position) to the grid
             itc = clusters.begin();
@@ -136,6 +160,7 @@ void ClusterManagerLayer::draw(unsigned long long t) {
             }
 
         }
+
 
         unordered_map<string, GeologicCluster*> clusters = algoClustering.getClusters();
         unordered_map<string, GeologicCluster*>::iterator itc = clusters.begin();
@@ -156,6 +181,8 @@ void ClusterManagerLayer::draw(unsigned long long t) {
         this->clusterGrid->clearGrid(true);
         this->colors.clear();
     }
+
+
 }
 
 /*!

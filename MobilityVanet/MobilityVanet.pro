@@ -65,6 +65,8 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../geologic-osm/release
 else:unix: LIBS += -L$$PWD/../geologic-osm/release/ -lgeologic-osm
 
 win32:LIBS += -lopengl32 -lglu32 -lglut -lmingw32 -lm
+else:unix: LIBS += -lGL -lglut -lGLU -lGeographic -lreadosm
+
 ### -------------------------------------<
 
 
@@ -85,7 +87,8 @@ HEADERS += \
     include/displayClasses/vehiclePropagCircle.h \
     include/displayClasses/vehiclePropagMeshes.h \
     include/displayClasses/vehicleTrace.h \
-    include/clustering/propagclustering.h
+    include/clustering/propagclustering.h \
+    include/clustering/testclustering.h
 
 
 SOURCES += \
@@ -105,7 +108,8 @@ SOURCES += \
     src/displayClasses/vehiclePropagCircle.cpp \
     src/displayClasses/vehiclePropagMeshes.cpp \
     src/displayClasses/vehicleTrace.cpp \
-    src/clustering/propagclustering.cpp
+    src/clustering/propagclustering.cpp \
+    include/clustering/testclustering.cpp
 
 ### -------------------------------------<
 
